@@ -40,7 +40,7 @@ reddit = praw.Reddit(client_id='VbyvQMoXEEqDTg',
                      client_secret='9ajN1x4d8WESSCWoJLrOOvhq2hw',
                      user_agent='Reddit_Scraping',
                      username='JS075',
-                     password='yaorenzhen07')
+                     password='    ')
 
 def get_EarthPorn_url():
     subreddit = reddit.subreddit('EarthPorn')
