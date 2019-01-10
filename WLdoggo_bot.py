@@ -7,40 +7,11 @@ from telegram import ChatAction
 from functools import wraps
 import os
 
-LIST_OF_ADMINS = ["246483057"]
-
-def restricted(func):
-    @wraps(func)
-    def wrapped(bot, update, *args, **kwargs):
-        user_id = update.effective_user.id
-        if user_id not in LIST_OF_ADMINS:
-            print("Unauthorized access denied for {}.".format(user_id))
-            return
-        return func(bot, update, *args, **kwargs)
-    return wrapped
-
-@restricted
-def my_handler(bot, update):
-    pass  # only accessible if `user_id` is in `LIST_OF_ADMINS`.
-
-
-TOKEN = "655656312:AAEv54Q9OTxZXrqVWMetHM-j60hPaBFVxsU"
-PORT = int(os.environ.get('PORT', '8443'))
-updater = Updater(TOKEN)
-# add handlers
-updater.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=TOKEN)
-updater.bot.set_webhook("https://<doggo-bot-wl>.herokuapp.com/" + TOKEN)
-updater.idle()
-
-
-
 reddit = praw.Reddit(client_id='VbyvQMoXEEqDTg', 
                      client_secret='9ajN1x4d8WESSCWoJLrOOvhq2hw',
                      user_agent='Reddit_Scraping',
                      username='JS075',
-                     password='    ')
+                     password='Dunstaystuck07')
 
 def get_EarthPorn_url():
     subreddit = reddit.subreddit('EarthPorn')
@@ -58,7 +29,6 @@ def EarthPorn(bot, update):
     bot.sendChatAction(chat_id = chat_id, action = 'upload_photo')
     bot.send_photo(chat_id = chat_id, photo = url, caption = title)
     
-
 def joke(bot, update):
     url = "https://icanhazdadjoke.com/"
     r = requests.get(url)
@@ -150,7 +120,6 @@ def gif(bot, update):
 
 def unknown(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="Arf-arf, I don't understand that command.")
-
 
 def main():
     updater = Updater('655656312:AAEv54Q9OTxZXrqVWMetHM-j60hPaBFVxsU')
