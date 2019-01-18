@@ -1,1 +1,1 @@
-web: python WLdoggo_bot.py
+worker: python WLdoggo_bot.py
